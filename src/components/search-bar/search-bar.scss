@@ -1,0 +1,12 @@
+@import "../../util/variables";
+
+#search-container {
+  width: $desktop-width;
+  height: 250px;
+  background-image: url("../../assets/pattern-bg.png");
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
