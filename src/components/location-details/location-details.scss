@@ -1,0 +1,37 @@
+@import "../../util/variables";
+@import "https://fonts.googleapis.com/css2?family=Rubik&display=swap";
+
+#details-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-around;
+  background-color: aquamarine;
+  height: 150px;
+  width: 75%;
+  margin: auto;
+  border-radius: 20px;
+  margin-top: -75px;
+
+  .details__info {
+    height: 60%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
+    h5 {
+      margin: 0;
+      color: rgba(128, 128, 128, 0.55);
+      font-family: Rubik;
+      font-weight: $largest-weight;
+      letter-spacing: 1.5px;
+    }
+    h6 {
+      margin: 0;
+      font-family: Rubik;
+      font-weight: $largest-weight;
+      font-size: 20px;
+    }
+  }
+}

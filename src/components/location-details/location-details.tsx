@@ -41,19 +41,19 @@ export default function LocationDetails(props: LocationDetailsProps) {
   }, [props.searchValue]);
   return (
     <div id="details-container">
-      <span id="details__ip-address">
+      <span className="details__info" id="details__ip-address">
         <h5>IP ADDRESS</h5>
         <h6>{ipAddress}</h6>
       </span>
-      <span id="details__location">
+      <span className="details__info" id="details__location">
         <h5>LOCATION</h5>
         <h6>{location.country}</h6>
       </span>
-      <span id="details__timezone">
+      <span className="details__info" id="details__timezone">
         <h5>TIMEZONE</h5>
         <h6>{timezone}</h6>
       </span>
-      <span id="details__isp">
+      <span className="details__info" id="details__isp">
         <h5>ISP</h5>
         <h6>{ISP}</h6>
       </span>
