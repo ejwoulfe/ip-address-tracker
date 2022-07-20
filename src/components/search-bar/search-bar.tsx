@@ -43,7 +43,7 @@ export default function SearchBar(props: SearchBarProps) {
           value={IPAddress}
           onChange={(e) => setIPAddress(e.target.value)}
         />
-        <button id="search__button">Search</button>
+        <button id="search__button">{">"}</button>
       </form>
     </div>
   );

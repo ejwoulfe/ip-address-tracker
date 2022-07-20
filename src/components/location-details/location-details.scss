@@ -1,5 +1,4 @@
 @import "../../util/variables";
-@import "https://fonts.googleapis.com/css2?family=Rubik&display=swap";
 
 #details-container {
   display: flex;
@@ -23,13 +22,13 @@
     h5 {
       margin: 0;
       color: rgba(128, 128, 128, 0.55);
-      font-family: Rubik;
+
       font-weight: $largest-weight;
       letter-spacing: 1.5px;
     }
     h6 {
       margin: 0;
-      font-family: Rubik;
+
       font-weight: $largest-weight;
       font-size: 20px;
     }

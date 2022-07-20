@@ -24,21 +24,23 @@ export default function LocationDetails(props: LocationDetailsProps) {
   });
   const [timezone, setTimezone] = useState<string>("N/A");
   const [ISP, setISP] = useState<string>("N/A");
+
   useEffect(() => {
+    async function fetchIPInformation() {
+      let fetchIP = await fetch(
+        process.env.REACT_APP_IPIFY_API_KEY + props.searchValue
+      );
+      let ipData: IPAddressFetchObject = await fetchIP.json();
+      setIPAddress(ipData.ip);
+      setLocation(ipData.location);
+      setTimezone(ipData.location.timezone);
+      setISP(ipData.isp);
+    }
     if (props.searchValue !== "") {
-      fetch(process.env.REACT_APP_IPIFY_API_KEY + props.searchValue)
-        .then((response) => response.json())
-        .then((data: IPAddressFetchObject) => {
-          setIPAddress(data.ip);
-          setLocation(data.location);
-          setTimezone(data.location.timezone);
-          setISP(data.isp);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      fetchIPInformation();
     }
   }, [props.searchValue]);
+
   return (
     <div id="details-container">
       <span className="details__info" id="details__ip-address">
