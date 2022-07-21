@@ -5,12 +5,14 @@ interface LocationDetailsProps {
   searchValue: string;
   setLangAndLat: React.Dispatch<React.SetStateAction<Array<number>>>;
 }
+
 interface IPAddressFetchObject {
   ip: string;
   location: LocationObject;
   timezone: string;
   isp: string;
 }
+
 interface LocationObject {
   city: string;
   country: string;
@@ -19,6 +21,7 @@ interface LocationObject {
   lat: number;
   lng: number;
 }
+
 export default function LocationDetails(props: { data: LocationDetailsProps }) {
   const [ipAddress, setIPAddress] = useState<string>("N/A");
   const [location, setLocation] = useState<LocationObject>({
@@ -62,11 +65,13 @@ export default function LocationDetails(props: { data: LocationDetailsProps }) {
       </span>
       <span className="details__info" id="details__location">
         <h5>LOCATION</h5>
-        <h6>{location.country}</h6>
+        <h6>
+          {location.city + ", " + location.region + ", " + location.country}
+        </h6>
       </span>
       <span className="details__info" id="details__timezone">
         <h5>TIMEZONE</h5>
-        <h6>{timezone}</h6>
+        <h6>UTC{timezone}</h6>
       </span>
       <span className="details__info" id="details__isp">
         <h5>ISP</h5>
