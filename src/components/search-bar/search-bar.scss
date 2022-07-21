@@ -1,6 +1,9 @@
 @import "../../util/variables";
 @import "https://fonts.googleapis.com/css2?family=Rubik&display=swap";
 
+// Variables
+$search-bar-height: 55px;
+
 #search-container {
   width: $desktop-width;
   height: 250px;

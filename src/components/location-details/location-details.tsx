@@ -3,6 +3,7 @@ import "./location-details.scss";
 
 interface LocationDetailsProps {
   searchValue: string;
+  setLangAndLat: React.Dispatch<React.SetStateAction<Array<number>>>;
 }
 interface IPAddressFetchObject {
   ip: string;
@@ -11,16 +12,22 @@ interface IPAddressFetchObject {
   isp: string;
 }
 interface LocationObject {
+  city: string;
   country: string;
   region: string;
   timezone: string;
+  lat: number;
+  lng: number;
 }
-export default function LocationDetails(props: LocationDetailsProps) {
+export default function LocationDetails(props: { data: LocationDetailsProps }) {
   const [ipAddress, setIPAddress] = useState<string>("N/A");
   const [location, setLocation] = useState<LocationObject>({
+    city: "N/A",
     country: "N/A",
     region: "N/A",
     timezone: "N/A",
+    lat: 0,
+    lng: 0,
   });
   const [timezone, setTimezone] = useState<string>("N/A");
   const [ISP, setISP] = useState<string>("N/A");
@@ -28,18 +35,24 @@ export default function LocationDetails(props: LocationDetailsProps) {
   useEffect(() => {
     async function fetchIPInformation() {
       let fetchIP = await fetch(
-        process.env.REACT_APP_IPIFY_API_KEY + props.searchValue
+        "https://geo.ipify.org/api/v2/country,city?apiKey=" +
+          process.env.REACT_APP_IPIFY_API_KEY +
+          "&ipAddress=" +
+          props.data.searchValue
       );
+
       let ipData: IPAddressFetchObject = await fetchIP.json();
       setIPAddress(ipData.ip);
       setLocation(ipData.location);
       setTimezone(ipData.location.timezone);
       setISP(ipData.isp);
+      props.data.setLangAndLat([ipData.location.lat, ipData.location.lng]);
+      await console.log(ipData);
     }
-    if (props.searchValue !== "") {
+    if (props.data.searchValue !== "") {
       fetchIPInformation();
     }
-  }, [props.searchValue]);
+  }, [props.data.searchValue]);
 
   return (
     <div id="details-container">
